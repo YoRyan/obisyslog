@@ -5,7 +5,7 @@ from collections import OrderedDict
 
 import yaml  # this needs package called PyYAML
 
-from requests import post
+from requests import get, post
 
 
 class ObihaiHelper:
@@ -260,8 +260,8 @@ class ObihaiHelper:
                 phone_number = phone_number.replace('-', '')
                 phone_number = phone_number.replace('+', '')
                 phone_number = phone_number.replace(' ', '')
-                base_url_post = base_url + phone_number + sid + token
-                response = post(base_url_post)
+                base_url = base_url + phone_number + sid + token
+                response = get(base_url)
                 self.print(self.log_level_info, "ObihaiHelper:gcnfo():requesting: " + phone_number)
                 self.print(self.log_level_info, "ObihaiHelper:gcnfo():response: " + response.text)
                 if response.status_code == 200:
