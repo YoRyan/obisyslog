@@ -53,7 +53,10 @@ class ObihaiHelper:
         if item is not None:
             caller_name = item["Name"]
         else:
-            caller_name = self.get_caller_name_from_opencnam(caller_number)
+            if caller_number == "":
+                caller_name = "Private Caller"
+            else:
+                caller_name = self.get_caller_name_from_opencnam(caller_number)
             json_phone_book[caller_number] = {
                 "Name": caller_name,
                 "Port": port_str,
